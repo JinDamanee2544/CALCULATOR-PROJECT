@@ -8,8 +8,10 @@
   <File Type="RDS-DCP" Name="main.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PPRDIR/../../Vivaldo/reuseComp/SinglePulser.v">
+    <File Path="$PSRCDIR/sources_1/imports/reuseComp/SinglePulser.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Vivaldo/reuseComp/SinglePulser.v"/>
+        <Attr Name="ImportTime" Val="1663970842"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -22,8 +24,10 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../Vivaldo/reuseComp/clockDiv.v">
+    <File Path="$PSRCDIR/sources_1/imports/reuseComp/clockDiv.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Vivaldo/reuseComp/clockDiv.v"/>
+        <Attr Name="ImportTime" Val="1663970842"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -36,15 +40,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../Vivaldo/reuseComp/hexTo7Segment.v">
+    <File Path="$PSRCDIR/sources_1/imports/reuseComp/hexTo7Segment.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Vivaldo/reuseComp/hexTo7Segment.v"/>
+        <Attr Name="ImportTime" Val="1663970842"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../Vivaldo/reuseComp/quadSevenSeg.v">
+    <File Path="$PSRCDIR/sources_1/imports/reuseComp/quadSevenSeg.v">
       <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Vivaldo/reuseComp/quadSevenSeg.v"/>
+        <Attr Name="ImportTime" Val="1663973417"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

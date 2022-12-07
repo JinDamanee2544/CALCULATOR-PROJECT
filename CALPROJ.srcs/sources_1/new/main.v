@@ -24,7 +24,7 @@ module main(
     output [6:0] seg,
     output dot,
     output [3:0] sel,
-    //    input [7:0] sw,
+    input [15:0] sw,
     input BTNC,
     input sysCLK
 );
@@ -41,8 +41,6 @@ module main(
         .signal(BTNC),
         .clk(finalCLK)
     );
-
-
     wire [15:0] a = 16'd2;
     wire [15:0] b = 16'd2;
     wire isNaN,isOverFlow;
