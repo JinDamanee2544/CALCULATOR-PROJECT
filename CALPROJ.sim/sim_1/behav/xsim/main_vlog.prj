@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../Vivaldo/reuseComp/SinglePulser.v" \
+"../../../../CALPROJ.srcs/sources_1/new/calculator.v" \
+"../../../../../../Vivaldo/reuseComp/clockDiv.v" \
+"../../../../CALPROJ.srcs/sources_1/new/clockDivComp.v" \
+"../../../../../../Vivaldo/reuseComp/hexTo7Segment.v" \
+"../../../../../../Vivaldo/reuseComp/quadSevenSeg.v" \
+"../../../../CALPROJ.srcs/sources_1/new/main.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

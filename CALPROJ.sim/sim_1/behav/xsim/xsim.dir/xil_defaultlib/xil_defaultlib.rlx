@@ -1,0 +1,12 @@
+0.7
+2020.2
+Apr 18 2022
+16:05:34
+C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.sim/sim_1/behav/xsim/glbl.v,1649976174,verilog,,,,glbl,,,,,,,,
+C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/calculator.v,1670388868,verilog,,C:/Users/USER/Desktop/Vivaldo/reuseComp/clockDiv.v,,calculator,,,,,,,,
+C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v,1670387296,verilog,,C:/Users/USER/Desktop/Vivaldo/reuseComp/hexTo7Segment.v,,clockDivComp,,,,,,,,
+C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v,1670388902,verilog,,,,main,,,,,,,,
+C:/Users/USER/Desktop/Vivaldo/reuseComp/SinglePulser.v,1663970842,verilog,,C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/calculator.v,,SinglePulser,,,,,,,,
+C:/Users/USER/Desktop/Vivaldo/reuseComp/clockDiv.v,1663970842,verilog,,C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v,,clockDiv,,,,,,,,
+C:/Users/USER/Desktop/Vivaldo/reuseComp/hexTo7Segment.v,1663970842,verilog,,C:/Users/USER/Desktop/Vivaldo/reuseComp/quadSevenSeg.v,,hexTo7segment,,,,,,,,
+C:/Users/USER/Desktop/Vivaldo/reuseComp/quadSevenSeg.v,1663973417,verilog,,C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v,,quadSevenSeg,,,,,,,,
