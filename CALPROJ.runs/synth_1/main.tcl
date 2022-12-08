@@ -89,12 +89,12 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Users/USER/Desktop/Vivaldo/reuseComp/SinglePulser.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/SinglePulser.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/calculator.v
-  C:/Users/USER/Desktop/Vivaldo/reuseComp/clockDiv.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/clockDiv.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v
-  C:/Users/USER/Desktop/Vivaldo/reuseComp/hexTo7Segment.v
-  C:/Users/USER/Desktop/Vivaldo/reuseComp/quadSevenSeg.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/hexTo7Segment.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/quadSevenSeg.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v
 }
 OPTRACE "Adding files" END { }
