@@ -88,6 +88,7 @@ set_property ip_output_repo c:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.cache/i
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_mem C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/font.mem
 read_verilog -library xil_defaultlib {
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/SinglePulser.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/calculator.v
@@ -95,6 +96,8 @@ read_verilog -library xil_defaultlib {
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/hexTo7Segment.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/quadSevenSeg.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/vga.v
+  C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/vga_sync.v
   C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v
 }
 OPTRACE "Adding files" END { }

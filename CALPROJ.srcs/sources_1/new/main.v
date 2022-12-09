@@ -21,6 +21,11 @@
 
 
 module main(
+    output wire [3:0] vgaRed,
+    output wire [3:0] vgaGreen,
+    output wire [3:0] vgaBlue,
+    output wire Hsync,
+    output wire Vsync,
     output [6:0] seg,
     output dot,
     output [3:0] sel,
@@ -76,13 +81,20 @@ module main(
         .result(result),
         .isNaN(isNaN),
         .isOverFlow(isOverFlow),
-        .a(a),
-        .b(b),
-        .op(sw[1:0]),
+        .a(sw[7:4]),
+        .b(sw[3:0]),
+        .op(sw[15:14]),
         .enter(enter)
     );
-
-    // Display 
+    // Display VGA
+    vga vgaInst(
+        .rgb({vgaRed, vgaGreen, vgaBlue}),
+        .hsync(Hsync),
+        .vsync(Vsync),
+        .result(result),
+        .clk(sysCLK)
+    );
+    // Display 7 Seg
     wire [3:0] num3,num2,num1,num0;
     wire sel3,sel2,sel1,sel0;
     assign sel = {sel3,sel2,sel1,sel0};
@@ -102,4 +114,5 @@ module main(
         num3,
         finalCLK
     );
+    
 endmodule

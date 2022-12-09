@@ -1,14 +1,4 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/SinglePulser.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module SinglePulser
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/calculator.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module calculator
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/clockDiv.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module clockDiv
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module clockDivComp
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/hexTo7Segment.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module hexTo7segment
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/imports/reuseComp/quadSevenSeg.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module quadSevenSeg
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module main
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sim_1/new/testCalculator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testCalculator
