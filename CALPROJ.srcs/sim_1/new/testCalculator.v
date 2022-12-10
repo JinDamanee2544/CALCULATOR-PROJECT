@@ -50,33 +50,38 @@ module testCalculator;
         op = 2;
         #10;
         op = 3;
-        
         #10;
+        
         operator = 1; operand = 0;
         op = 3;
-        
         #10;
+        
         operator = 9999; operand = 1;
         op = 0;
-        
         #10;
+        
         operator = -9999; operand = -1;
         op = 0;
-        
         #10;
+        
         operator = 1; operand= 2;
         op = 0;
-        
         #10;
         
         operator = -9999; operand= -9999;
         op = 0;
-        
         #10
         
-        operator = 1; operand= 2;
-        op = 0;
+        operator = 6; operand= 5;
+        op = 2;
+        #10
         
+        operator = 8; operand= 4;
+        op = 2;
+        #10
+        
+        operator = 1; operand= -2;
+        op = 0;
         #10
         $finish;
     end

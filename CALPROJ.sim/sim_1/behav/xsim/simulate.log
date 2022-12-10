@@ -1,0 +1,14 @@
+Time resolution is 1 ps
+time                    0 | {a=   13 b=    3 op=00} -> {result=   16 nan=0 overflow=0}
+time                10000 | {a=   13 b=    3 op=01} -> {result=   10 nan=0 overflow=0}
+time                20000 | {a=   13 b=    3 op=10} -> {result=   39 nan=0 overflow=0}
+time                30000 | {a=   13 b=    3 op=11} -> {result=    4 nan=0 overflow=0}
+time                40000 | {a=    1 b=    0 op=11} -> {result= 9999 nan=1 overflow=0}
+time                50000 | {a= 9999 b=    1 op=00} -> {result=10000 nan=0 overflow=1}
+time                60000 | {a=55537 b=65535 op=00} -> {result=55536 nan=0 overflow=1}
+time                70000 | {a=    1 b=    2 op=00} -> {result=    3 nan=0 overflow=0}
+time                80000 | {a=55537 b=55537 op=00} -> {result=45538 nan=0 overflow=1}
+time                90000 | {a=    6 b=    5 op=10} -> {result=   30 nan=0 overflow=0}
+time               100000 | {a=    8 b=    4 op=10} -> {result=   32 nan=0 overflow=0}
+time               110000 | {a=    1 b=65534 op=00} -> {result=65535 nan=0 overflow=0}
+$finish called at time : 120 ns : File "C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sim_1/new/testCalculator.v" Line 86

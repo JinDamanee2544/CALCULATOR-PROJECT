@@ -21,7 +21,7 @@
 
 
 module calculator(
-    output reg [15:0] result,
+    output reg signed [15:0] result,
     output reg isNaN,
     output reg isOverFlow,
     //output reg isUnderFlow,
@@ -50,11 +50,15 @@ module calculator(
                 if(b!=0)begin
                     result = a/b;    
                 end
-                else isNaN = 1;
+                else begin 
+                    result = 9999;
+                    isNaN = 1;
+                end
             end
         endcase
         
-        if(result>9999) isOverFlow=1;
-        //if(result<-9999) isUnderFlow=1;
+        // check overflow
+        if(result > 9999) isOverFlow = 1;
+        if(result < -9999) isOverFlow = 1;
     end
 endmodule

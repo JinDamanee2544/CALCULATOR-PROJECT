@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sat Dec 10 17:48:58 2022
+| Date         : Sun Dec 11 01:37:23 2022
 | Host         : Earth running 64-bit major release  (build 9200)
 | Command      : report_drc -file main_drc_routed.rpt -pb main_drc_routed.pb -rpx main_drc_routed.rpx
 | Design       : main
@@ -50,13 +50,13 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net vgaInst/vga_sync_unit/pixel_reg_reg[0]_0 is a gated clock net sourced by a combinational pin vgaInst/vga_sync_unit/h_count_reg[9]_i_1/O, cell vgaInst/vga_sync_unit/h_count_reg[9]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net vgaInst/vga_sync_unit/p_tick is a gated clock net sourced by a combinational pin vgaInst/vga_sync_unit/rgb_reg[11]_i_2/O, cell vgaInst/vga_sync_unit/rgb_reg[11]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PLHOLDVIO-2#1 Warning
 Non-Optimal connections which could lead to hold violations  
-A LUT vgaInst/vga_sync_unit/h_count_reg[9]_i_1 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
-vgaInst/rgb_reg_reg[11]
+A LUT vgaInst/vga_sync_unit/rgb_reg[11]_i_2 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
+vgaInst/uiINST/rgb_reg_reg[11]
 Related violations: <none>
 
 
