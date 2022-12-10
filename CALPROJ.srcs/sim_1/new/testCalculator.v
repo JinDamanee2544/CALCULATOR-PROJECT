@@ -24,12 +24,12 @@ module testCalculator;
     reg [15:0] operator, operand;
     reg [1:0] op;
     wire [15:0] result;
-    wire isNaN, isOverflow;
+    wire isNaN, isOverflow,isUnderFlow;
     
     reg clk = 0;
     
     calculator c(
-        result, isNaN, isOverflow,
+        result, isNaN, isOverflow,isUnderFlow,
         op, operator, operand, clk
     );
     
@@ -56,6 +56,8 @@ module testCalculator;
         op = 0;
         
         #10;
+        operator = -8888; operand = -8888;
+        op = 0;
         
         $finish;
     end

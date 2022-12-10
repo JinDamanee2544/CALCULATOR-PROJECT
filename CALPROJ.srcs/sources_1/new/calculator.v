@@ -24,6 +24,7 @@ module calculator(
     output reg [15:0] result,
     output reg isNaN,
     output reg isOverFlow,
+    output reg isUnderFlow,
     input [1:0] op,
     input [15:0] a,
     input [15:0] b,
@@ -31,10 +32,15 @@ module calculator(
 );
     initial begin
         result = 0;
+        isOverFlow = 0;
+        isUnderFlow = 0;
+        isNaN = 0;
     end
     
     always@(posedge enter) begin
+        result = 0;
         isOverFlow = 0;
+        isUnderFlow = 0;
         isNaN = 0;
         
         case(op)
@@ -50,8 +56,6 @@ module calculator(
         endcase
         
         if(result>9999) isOverFlow=1;
-//        if(result<-9999) isOverFlow=1;
-//        if(result < -16'd9999 || result > 16'd9999) isOverFlow = 1; 
-//        else isOverFlow = 0;
+        if(result<-9999) isUnderFlow=1;
     end
 endmodule
