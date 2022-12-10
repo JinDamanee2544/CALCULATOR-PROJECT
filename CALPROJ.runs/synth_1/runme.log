@@ -22,9 +22,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 20920
+INFO: [Synth 8-7075] Helper process launched with PID 19472
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1284.664 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1285.633 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/main.v:23]
 INFO: [Synth 8-6157] synthesizing module 'clockDivComp' [C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.srcs/sources_1/new/clockDivComp.v:23]
@@ -74,18 +74,18 @@ WARNING: [Synth 8-7129] Port sw[10] in module main is either unconnected or has 
 WARNING: [Synth 8-7129] Port sw[9] in module main is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sw[8] in module main is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1284.664 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1285.633 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1284.664 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1285.633 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1284.664 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1285.633 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1284.664 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1285.633 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -96,41 +96,40 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1339.438 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1299.918 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1339.438 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1299.918 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1339.438 ; gain = 54.773
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1299.918 ; gain = 14.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1339.438 ; gain = 54.773
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1299.918 ; gain = 14.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1339.438 ; gain = 54.773
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1299.918 ; gain = 14.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1339.438 ; gain = 54.773
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1299.918 ; gain = 14.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 14    
+	   2 Input   32 Bit       Adders := 4     
 	   3 Input   16 Bit       Adders := 1     
-	   2 Input   12 Bit       Adders := 1     
-	   2 Input   11 Bit       Adders := 4     
+	   2 Input   11 Bit       Adders := 5     
 	   2 Input   10 Bit       Adders := 2     
 	   2 Input    6 Bit       Adders := 6     
 	   2 Input    2 Bit       Adders := 2     
@@ -141,15 +140,15 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 2     
 	                1 Bit    Registers := 33    
 +---Muxes : 
+	 821 Input   50 Bit        Muxes := 2     
+	 921 Input   50 Bit        Muxes := 2     
 	   2 Input   16 Bit        Muxes := 1     
 	   4 Input   16 Bit        Muxes := 3     
 	   2 Input   12 Bit        Muxes := 3     
-	   6 Input   12 Bit        Muxes := 1     
-	   5 Input   12 Bit        Muxes := 1     
 	   4 Input    4 Bit        Muxes := 2     
 	   4 Input    1 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 9     
 	   5 Input    1 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -162,197 +161,3 @@ BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Cross Boundary and Area Optimization
----------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-Why this net has no driver: _order_recur <const0>
-WARNING: [Synth 8-3917] design main has port dot driven by constant 1
-WARNING: [Synth 8-7129] Port result[15] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[14] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[13] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[12] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[11] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[10] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[9] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[8] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[7] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[6] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[5] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[4] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[3] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[2] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[1] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port result[0] in module vga is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[13] in module main is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[12] in module main is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[11] in module main is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[10] in module main is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[9] in module main is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[8] in module main is either unconnected or has no load
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:01 . Memory (MB): peak = 1339.438 ; gain = 54.773
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-ROM: Preliminary Mapping Report
-+------------+------------+---------------+----------------+
-|Module Name | RTL Object | Depth x Width | Implemented As | 
-+------------+------------+---------------+----------------+
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | romFont    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-|vga         | p_0_out    | 2048x45       | LUT            | 
-+------------+------------+---------------+----------------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying XDC Timing Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:05 ; elapsed = 00:01:07 . Memory (MB): peak = 1339.438 ; gain = 54.773
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:11 . Memory (MB): peak = 1339.438 ; gain = 54.773
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:13 ; elapsed = 00:01:16 . Memory (MB): peak = 1440.605 ; gain = 155.941
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:20 ; elapsed = 00:01:23 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:20 ; elapsed = 00:01:23 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:21 ; elapsed = 00:01:24 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:21 ; elapsed = 00:01:24 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:22 ; elapsed = 00:01:25 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:22 ; elapsed = 00:01:25 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
-
-Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |     2|
-|3     |LUT1   |    22|
-|4     |LUT2   |    97|
-|5     |LUT3   |   211|
-|6     |LUT4   |   473|
-|7     |LUT5   |  1770|
-|8     |LUT6   |  6159|
-|9     |MUXF7  |  1336|
-|10    |MUXF8  |   163|
-|11    |FDRE   |   186|
-|12    |FDSE   |     8|
-|13    |IBUF   |    12|
-|14    |OBUF   |    26|
-+------+-------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:22 ; elapsed = 00:01:25 . Memory (MB): peak = 1454.188 ; gain = 169.523
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 24 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:13 ; elapsed = 00:01:22 . Memory (MB): peak = 1454.188 ; gain = 114.750
-Synthesis Optimization Complete : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 1454.188 ; gain = 169.523
-INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.163 . Memory (MB): peak = 1466.258 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1501 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1469.934 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Synth Design complete, checksum: cef4b11a
-INFO: [Common 17-83] Releasing license: Synthesis
-40 Infos, 51 Warnings, 0 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:28 ; elapsed = 00:01:31 . Memory (MB): peak = 1469.934 ; gain = 185.270
-INFO: [Common 17-1381] The checkpoint 'C:/Users/USER/Desktop/HWPROJ/CALPROJ/CALPROJ.runs/synth_1/main.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Dec  9 15:22:10 2022...
