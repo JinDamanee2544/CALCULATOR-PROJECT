@@ -27,196 +27,135 @@ module vga(
     
     // --------------------------------------------------------------------------------------- //
     
-    localparam DIGIT_WIDTH       = 50;
-    localparam DIGIT_HEIGHT       = 100;
-    localparam DISPLAY_OFFSET_X     = 100;
-    localparam DISPLAY_OFFSET_Y     = 100;
+    localparam DIGIT_WIDTH          = 50;
+    localparam DIGIT_HEIGHT         = 100;
+    localparam DISPLAY_OFFSET_X     = 50;
     
-    reg [49:0] romFont [1299:0]; 
-    // 1300 row (100 row per char) of 50 pixel
+    reg [49:0] romFont [18*100-1:0]; 
+    // 18 char (100 row per char) of 50 pixel
     initial begin
         $readmemb("font.mem",romFont);
     end 
     
     // 3 is Leftmost Bit
-    reg [15:0] OP,signA,signB,digit3,digit2,digit1,digit0;
-    
-    initial begin 
-        digit3 = 0;
-        digit2 = 1;
-        digit1 = 2;
-        digit0 = 3;
-        signA = 13;
-        signB = 14;
-        OP = 13;
-    end
-   
-    
+    reg [15:0] OP,signA,signB;
+    reg [15:0] digit13,digit12,digit11,digit10;
+    reg [15:0] digit23,digit22,digit21,digit20;
+    reg [15:0] digit33,digit32,digit31,digit30;
+
     // 0 - 9
-    // a - 16'ha
-    // A - 16'hb
-    // N - 16'hc
-    // - - 16'hd
-    // + - 16'he
-    integer font_x,font_y;
+    // 10 - +
+    // 11 - -
+    // 12 - mul
+    // 13 - divide
+    // 14 - a
+    // 15 - A
+    // 16 - N
+    // 17 - /
+    // anyelse will display as blank :)
+
+    initial begin 
+        digit13 = 0;
+        digit12 = 1;
+        digit11 = 2;
+        digit10 = 3;
+        
+        digit23 = 10;
+        digit22 = 11;
+        digit21 = 12;
+        digit20 = 13;
+        
+        digit33 = 14;
+        digit32 = 15;
+        digit31 = 16;
+        digit30 = 17;
+        
+        signA = 10;
+        signB = 11;
+        OP = 12;
+    end
     
     always @(posedge p_tick)  begin
         // line 1
         if(100 < y && y < 100+DIGIT_HEIGHT) begin
             // SIGN
-            if(0 < x && x < 0+DIGIT_WIDTH && romFont[signA*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+0])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X < x && x < DISPLAY_OFFSET_X+DIGIT_WIDTH && romFont[signA*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 3
-            if(100 < x && x < 100+DIGIT_WIDTH && romFont[digit3*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+100])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+100 < x && x < DISPLAY_OFFSET_X+100+DIGIT_WIDTH && romFont[digit13*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+100+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 2 
-            if(200 < x && x < 200+DIGIT_WIDTH && romFont[digit2*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+200])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+200 < x && x < DISPLAY_OFFSET_X+200+DIGIT_WIDTH && romFont[digit12*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+200+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 1
-            if(300 < x && x < 300+DIGIT_WIDTH && romFont[digit1*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+300])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+300 < x && x < DISPLAY_OFFSET_X+300+DIGIT_WIDTH && romFont[digit11*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+300+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 0
-            if(400 < x && x < 400+DIGIT_WIDTH && romFont[digit0*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+400])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end
+            if(DISPLAY_OFFSET_X+400 < x && x < DISPLAY_OFFSET_X+400+DIGIT_WIDTH && romFont[digit10*100+y-DIGIT_HEIGHT][DIGIT_WIDTH-x+400+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // OUTSIDE
-            begin
-                rgb_reg[3:0] = 0; // B
-                rgb_reg[7:4] = 0; // G
-                rgb_reg[11:8] = 0; // R
-            end
+                rgb_reg = 12'h000;
         end
-        else
+        
         // line 2
         if(200+20 < y && y < 200+20+DIGIT_HEIGHT) begin
             // SIGN
-            if(0 < x && x < 0+DIGIT_WIDTH && romFont[signB*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+0])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X < x && x < DISPLAY_OFFSET_X+DIGIT_WIDTH && romFont[signB*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 3
-            if(100 < x && x < 100+DIGIT_WIDTH && romFont[digit3*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+100])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+100 < x && x < DISPLAY_OFFSET_X+100+DIGIT_WIDTH && romFont[digit23*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+100+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 2 
-            if(200 < x && x < 200+DIGIT_WIDTH && romFont[digit2*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+200])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+200 < x && x < DISPLAY_OFFSET_X+200+DIGIT_WIDTH && romFont[digit22*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+200+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 1
-            if(300 < x && x < 300+DIGIT_WIDTH && romFont[digit1*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+300])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+300 < x && x < DISPLAY_OFFSET_X+300+DIGIT_WIDTH && romFont[digit21*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+300+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 0
-            if(400 < x && x < 400+DIGIT_WIDTH && romFont[digit0*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+400])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end
+            if(DISPLAY_OFFSET_X+400 < x && x < DISPLAY_OFFSET_X+400+DIGIT_WIDTH && romFont[digit20*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+400+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // OP
-            if(500 < x && x < 500+DIGIT_WIDTH && romFont[OP*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+500])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end
+            if(DISPLAY_OFFSET_X+500 < x && x < DISPLAY_OFFSET_X+500+DIGIT_WIDTH && romFont[OP*100+y-120-DIGIT_HEIGHT][DIGIT_WIDTH-x+500+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // OUTSIDE
-            begin
-                rgb_reg[3:0] = 0; // B
-                rgb_reg[7:4] = 0; // G
-                rgb_reg[11:8] = 0; // R
-            end
+                rgb_reg = 12'h000;
         end
-        else
+        
         // line 3
         if(300+40 < y && y < 300+40+DIGIT_HEIGHT) begin
             // SIGN
-            if(0 < x && x < 0+DIGIT_WIDTH && romFont[signA*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+0])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X < x && x < DISPLAY_OFFSET_X+DIGIT_WIDTH && romFont[signA*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 3
-            if(100 < x && x < 100+DIGIT_WIDTH && romFont[digit3*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+100])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+100 < x && x < DISPLAY_OFFSET_X+100+DIGIT_WIDTH && romFont[digit33*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+100+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 2 
-            if(200 < x && x < 200+DIGIT_WIDTH && romFont[digit2*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+200])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+200 < x && x < DISPLAY_OFFSET_X+200+DIGIT_WIDTH && romFont[digit32*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+200+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 1
-            if(300 < x && x < 300+DIGIT_WIDTH && romFont[digit1*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+300])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+300 < x && x < DISPLAY_OFFSET_X+300+DIGIT_WIDTH && romFont[digit31*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+300+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // DIGIT 0
-            if(400 < x && x < 400+DIGIT_WIDTH && romFont[digit0*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+400])
-            begin
-                rgb_reg[3:0] = 15; // B
-                rgb_reg[7:4] = 15; // G
-                rgb_reg[11:8] = 15; // R
-            end 
+            if(DISPLAY_OFFSET_X+400 < x && x < DISPLAY_OFFSET_X+400+DIGIT_WIDTH && romFont[digit30*100+y-240-DIGIT_HEIGHT][DIGIT_WIDTH-x+400+DISPLAY_OFFSET_X])
+                rgb_reg = 12'hfff;
             else
             // OUTSIDE
-            begin
-                rgb_reg[3:0] = 0; // B
-                rgb_reg[7:4] = 0; // G
-                rgb_reg[11:8] = 0; // R
-            end
+                rgb_reg = 12'h000;
         end
         
     end
