@@ -24,16 +24,20 @@ module testCalculator;
     reg [15:0] operator, operand;
     reg [1:0] op;
     wire [15:0] result;
-    wire isNaN, isOverflow,isUnderFlow;
-    
-    reg clk = 0;
+    wire isNaN, isOverflow;
+    // wire isUnderFlow;
     
     calculator c(
-        result, isNaN, isOverflow,isUnderFlow,
-        op, operator, operand, clk
+        .a(operator),
+        .b(operand),
+        .result(result),
+        .isNaN(isNaN),
+        .isOverFlow(isOverflow),
+        //.isUnderFlow(isUnderFlow),
+        .op(op)
     );
     
-    always #2 clk = ~clk;
+//    always #2 clk = ~clk;
     
     initial begin
         $monitor("time %t | {a=%d b=%d op=%b} -> {result=%d nan=%b overflow=%b}", $time, operator, operand, op, result, isNaN, isOverflow);
@@ -52,13 +56,28 @@ module testCalculator;
         op = 3;
         
         #10;
-        operator = 8888; operand = 8888;
+        operator = 9999; operand = 1;
         op = 0;
         
         #10;
-        operator = -8888; operand = -8888;
+        operator = -9999; operand = -1;
         op = 0;
         
+        #10;
+        operator = 1; operand= 2;
+        op = 0;
+        
+        #10;
+        
+        operator = -9999; operand= -9999;
+        op = 0;
+        
+        #10
+        
+        operator = 1; operand= 2;
+        op = 0;
+        
+        #10
         $finish;
     end
 endmodule
