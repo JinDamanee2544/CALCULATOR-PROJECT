@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Wed Dec  7 11:56:37 2022
+| Date         : Sun Dec 11 01:36:12 2022
 | Host         : Earth running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    20 |
-|    Minimum number of control sets                        |    20 |
+| Total control sets                                       |    25 |
+|    Minimum number of control sets                        |    25 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   139 |
+| Unused register locations in slices containing registers |   157 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    20 |
-| >= 0 to < 4        |    20 |
-| >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     0 |
+| Total control sets |    25 |
+| >= 0 to < 4        |    21 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     0 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     0 |
+| >= 16              |     1 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,41 +58,46 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              21 |           20 |
+| No           | No                    | No                     |              31 |           27 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              72 |           41 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |              12 |            4 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------------------------+---------------+------------------+------------------+----------------+--------------+
-|                 Clock Signal                | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+---------------------------------------------+---------------+------------------+------------------+----------------+--------------+
-|  clkComp/genblk1[3].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[10].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[5].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[0].middleCLK/outCLK        |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[4].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[11].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[6].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[8].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[9].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[7].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[12].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[1].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[16].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[17].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[13].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[14].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[15].middleCLK/outCLK_reg_0 |               |                  |                1 |              1 |         1.00 |
-|  clkComp/genblk1[2].middleCLK/outCLK_reg_0  |               |                  |                1 |              1 |         1.00 |
-|  sysCLK_IBUF_BUFG                           |               |                  |                1 |              1 |         1.00 |
-|  clkComp/lastCLK/CLK                        |               |                  |                1 |              2 |         2.00 |
-+---------------------------------------------+---------------+------------------+------------------+----------------+--------------+
++---------------------------------------------+------------------------------------+----------------------------------------------+------------------+----------------+--------------+
+|                 Clock Signal                |            Enable Signal           |               Set/Reset Signal               | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------------------+------------------------------------+----------------------------------------------+------------------+----------------+--------------+
+|  clkComp/genblk1[0].middleCLK/outCLK        |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[17].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[5].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[6].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[7].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[1].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[3].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[2].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[4].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[9].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[11].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[12].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[8].middleCLK/outCLK_reg_0  |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[10].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[14].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[13].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[16].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/genblk1[15].middleCLK/outCLK_reg_0 |                                    |                                              |                1 |              1 |         1.00 |
+|  vgaInst/vga_sync_unit/p_tick               |                                    |                                              |                1 |              1 |         1.00 |
+|  clkComp/lastCLK/CLK                        |                                    |                                              |                1 |              2 |         2.00 |
+|  sysCLK_IBUF_BUFG                           | vgaInst/vga_sync_unit/p_tick       |                                              |                1 |              2 |         2.00 |
+|  sysCLK_IBUF_BUFG                           | vgaInst/vga_sync_unit/v_count_reg0 | vgaInst/vga_sync_unit/v_count_reg[9]_i_1_n_0 |                2 |              5 |         2.50 |
+|  sysCLK_IBUF_BUFG                           | vgaInst/vga_sync_unit/p_tick       | vgaInst/vga_sync_unit/h_count_reg[9]_i_1_n_0 |                2 |              7 |         3.50 |
+|  sysCLK_IBUF_BUFG                           |                                    |                                              |                7 |             10 |         1.43 |
+|  sysCLK_IBUF_BUFG                           | vgaInst/vga_sync_unit/v_count_reg0 |                                              |               40 |             70 |         1.75 |
++---------------------------------------------+------------------------------------+----------------------------------------------+------------------+----------------+--------------+
 
 
