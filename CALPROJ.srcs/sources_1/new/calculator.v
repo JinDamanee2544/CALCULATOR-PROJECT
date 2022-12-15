@@ -47,6 +47,7 @@ module calculator(
         endcase
         
         if(result>16'd9999) isOverFlow=1;
+        if(result<-16'd9999) isOverFlow=1;
     end
 endmodule
 
@@ -84,6 +85,20 @@ module testCalculator;
         #10;
         operator = 8888; operand = 8888;
         op = 0;
+        
+        #10;
+        operator = -9; operand = 3;
+        op = 3;
+        
+        #10;
+        operator = -23; operand = 44;
+        op = 0;
+        
+        #10;
+        op = 1;
+        
+        #10;
+        op = 2;
         
         #10;
         

@@ -25,6 +25,8 @@ module main(
     output dot,
     output [3:0] sel,
     input [15:0] sw,
+    output RsTx, //uart
+    input RsRx, //uart
     input BTNC,
     input sysCLK
 );
@@ -33,6 +35,10 @@ module main(
         .divCLK(finalCLK),
         .clk(sysCLK)
     );
+    
+    // UART RxTx
+    wire RsTx;
+    wire RsRx;
 
     // SINGLE PULSER
     wire enter;
@@ -56,7 +62,7 @@ module main(
         .enter(enter)
     );
 
-    // Display 
+    // Display
     wire [3:0] num3,num2,num1,num0;
     wire sel3,sel2,sel1,sel0;
     assign sel = {sel3,sel2,sel1,sel0};
