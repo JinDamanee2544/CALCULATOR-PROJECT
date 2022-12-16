@@ -24,6 +24,7 @@ module uartBuffer(
     output reg[15:0] a,
     output reg[15:0] b,
     output reg[1:0] op,
+    output reg[15:0] idx_reg,
     input wire clk,
     input wire rx,
     input wire tx
@@ -76,16 +77,20 @@ module uartBuffer(
 
     integer idx, i;
     integer degree, digit_cv, num_sign; // digit conversion for translatiing ACSII
-
     always @(posedge clk) begin
-        if (rxDone == 1) begin
-            // change a, b, and ops
-            if (out == newline || out == enter) begin
-                a = 0;
-                b = 0;
-                op = 0;
-                idx = 0;
-            end
+        idx_reg = idx;
+    end
+
+    always @(posedge rxDone) begin
+
+        // change a, b, and ops
+        if (out == newline || out == enter) begin
+            a = 0;
+            b = 0;
+            op = 0;
+            idx = 0;
+        end
+        else begin
             // translate a
             if (idx == 0) begin
                 if (out == negative) begin
@@ -95,7 +100,7 @@ module uartBuffer(
                     a = a;
                 end
             end
-            else if (idx <= 1 && idx >= 4) begin
+            else if (idx >= 1 && idx <= 4) begin
                 case (out)
                     n0: digit_cv = 0;
                     n1: digit_cv = 1;
@@ -131,7 +136,7 @@ module uartBuffer(
                     b = b;
                 end
             end
-            else if (idx <= 7 && idx >= 10) begin
+            else if (idx >= 7 && idx <= 10) begin
                 case (out)
                     n0: digit_cv = 0;
                     n1: digit_cv = 1;
@@ -158,8 +163,8 @@ module uartBuffer(
             else begin
                 idx = idx + 1;
             end
-
         end
+
     end
 
     initial begin

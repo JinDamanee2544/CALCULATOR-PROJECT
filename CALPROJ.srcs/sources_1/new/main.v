@@ -54,8 +54,11 @@ module main(
     wire [15:0] a,b;
     wire [1:0] op; // + - / *
     
+    // debugger
+    wire [15:0] idx;
+    
     uartBuffer uartBuf(
-        .a(a), .b(b), .op(op), .clk(sysCLK), .rx(RsRx), .tx(RsTx)
+        .a(a), .b(b), .op(op), .idx_reg(idx), .clk(sysCLK), .rx(RsRx), .tx(RsTx)
     );
     
     // --------------------------  ALU ---------------------------------- //
@@ -78,7 +81,7 @@ module main(
     wire [3:0] num3,num2,num1,num0;
     wire sel3,sel2,sel1,sel0;
     assign sel = {sel3,sel2,sel1,sel0};
-
+    
     assign {num3,num2,num1,num0} = result;
     
     // -------------------------- Display VGA -------------------------- //
@@ -104,7 +107,7 @@ module main(
         .dot(dot),
         .sel(sel),
 //        .minusLed(led[0]),
-        .result(result),
+        .result(idx),
         .clk(finalCLK)
     );
     
