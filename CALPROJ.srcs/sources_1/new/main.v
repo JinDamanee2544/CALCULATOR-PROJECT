@@ -63,7 +63,7 @@ module main(
     
     // --------------------------  ALU ---------------------------------- //
     
-    wire isNaN = 0,isOverFlow = 0;
+    wire isNaN, isOverFlow;
     wire [15:0] result;
 
     calculator calINST(

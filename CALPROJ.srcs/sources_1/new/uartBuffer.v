@@ -75,95 +75,97 @@ module uartBuffer(
         .txBusy(txBusy)
     );
 
-    integer idx, i;
+    integer idx, i, sign;
     integer degree, digit_cv, num_sign; // digit conversion for translatiing ACSII
     always @(posedge clk) begin
         idx_reg = idx;
     end
+    reg prevRxDone;
 
-    always @(posedge rxDone) begin
-
-        // change a, b, and ops
-        if (out == newline || out == enter) begin
-            a = 0;
-            b = 0;
-            op = 0;
-            idx = 0;
-        end
-        else begin
-            // translate a
-            if (idx == 0) begin
-                if (out == negative) begin
-                    a = -a;
-                end
-                else begin
-                    a = a;
-                end
-            end
-            else if (idx >= 1 && idx <= 4) begin
-                case (out)
-                    n0: digit_cv = 0;
-                    n1: digit_cv = 1;
-                    n2: digit_cv = 2;
-                    n3: digit_cv = 3;
-                    n4: digit_cv = 4;
-                    n5: digit_cv = 5;
-                    n6: digit_cv = 6;
-                    n7: digit_cv = 7;
-                    n8: digit_cv = 8;
-                    n9: digit_cv = 9;
-                endcase
-                case (idx)
-                    1: a = a + digit_cv*1000;
-                    2: a = a + digit_cv*100;
-                    3: a = a + digit_cv*10;
-                    4: a = a + digit_cv*1;
-                endcase
-            end
-            else if (idx == 5) begin
-                case(out)
-                    positive: op = 0;
-                    negative: op = 1;
-                    mul: op = 2;
-                    div: op = 3;
-                endcase
-            end
-            else if (idx == 6) begin
-                if (out == negative) begin
-                    b = -b;
-                end
-                else begin
-                    b = b;
-                end
-            end
-            else if (idx >= 7 && idx <= 10) begin
-                case (out)
-                    n0: digit_cv = 0;
-                    n1: digit_cv = 1;
-                    n2: digit_cv = 2;
-                    n3: digit_cv = 3;
-                    n4: digit_cv = 4;
-                    n5: digit_cv = 5;
-                    n6: digit_cv = 6;
-                    n7: digit_cv = 7;
-                    n8: digit_cv = 8;
-                    n9: digit_cv = 9;
-                endcase
-                case (idx)
-                    7: b = b + digit_cv*1000;
-                    8: b = b + digit_cv*100;
-                    9: b = b + digit_cv*10;
-                    10: b = b + digit_cv*1;
-                endcase
-            end
-
-            if (idx == 10) begin
+    always @(posedge clk) begin
+        if (prevRxDone == 0 && rxDone == 1) begin
+            if (out == newline || out == enter) begin
+                a = 0;
+                b = 0;
+                op = 0;
                 idx = 0;
             end
             else begin
-                idx = idx + 1;
+                digit_cv = 0;
+                if (idx == 0) begin
+                    if (out == negative) begin
+                        sign = -1;
+                    end
+                    else begin
+                        sign = 1;
+                    end
+                end
+                else if (idx >= 1 && idx <= 4) begin
+                    case (out)
+                        n0: digit_cv = 0;
+                        n1: digit_cv = 1;
+                        n2: digit_cv = 2;
+                        n3: digit_cv = 3;
+                        n4: digit_cv = 4;
+                        n5: digit_cv = 5;
+                        n6: digit_cv = 6;
+                        n7: digit_cv = 7;
+                        n8: digit_cv = 8;
+                        n9: digit_cv = 9;
+                    endcase
+                    case (idx)
+                        1: a = a + sign*digit_cv*1000;
+                        2: a = a + sign*digit_cv*100;
+                        3: a = a + sign*digit_cv*10;
+                        4: a = a + sign*digit_cv*1;
+                    endcase
+                end
+                else if (idx == 5) begin
+                    case(out)
+                        positive: op = 0;
+                        negative: op = 1;
+                        mul: op = 2;
+                        div: op = 3;
+                    endcase
+                end
+                else if (idx == 6) begin
+                    if (out == negative) begin
+                        sign = -1;
+                    end
+                    else begin
+                        sign = 1;
+                    end
+                end
+                else if (idx >= 7 && idx <= 10) begin
+                    case (out)
+                        n0: digit_cv = 0;
+                        n1: digit_cv = 1;
+                        n2: digit_cv = 2;
+                        n3: digit_cv = 3;
+                        n4: digit_cv = 4;
+                        n5: digit_cv = 5;
+                        n6: digit_cv = 6;
+                        n7: digit_cv = 7;
+                        n8: digit_cv = 8;
+                        n9: digit_cv = 9;
+                    endcase
+                    case (idx)
+                        7: b = b + sign*digit_cv*1000;
+                        8: b = b + sign*digit_cv*100;
+                        9: b = b + sign*digit_cv*10;
+                        10: b = b + sign*digit_cv*1;
+                    endcase
+                end
+
+                if (idx == 10) begin
+                    idx = 0;
+                end
+                else begin
+                    idx = idx + 1;
+                end
             end
         end
+        prevRxDone = rxDone;
 
     end
 
@@ -175,5 +177,6 @@ module uartBuffer(
         in = 0;
         rxEn = 1;
         txEn = 1;
+        prevRxDone = 0;
     end
 endmodule
