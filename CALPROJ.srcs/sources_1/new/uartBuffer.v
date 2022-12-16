@@ -26,17 +26,20 @@ module uartBuffer(
     output reg[1:0] op,
     input wire clk,
     input wire rx,
-    input wire tx 
+    input wire tx
 );
-    
+
     parameter CLOCK_RATE = 100000000;
     parameter BAUD_RATE = 9600;
-    
+
+    parameter enter = 8'b00001101;
+    parameter newline = 8'b00001010;
+
     parameter positive = 8'b00101011;
     parameter negative = 8'b00101101;
     parameter mul = 8'b00101010;
     parameter div = 8'b00101111;
-    
+
     parameter n0 = 8'b00110000;
     parameter n1 = 8'b00110001;
     parameter n2 = 8'b00110010;
@@ -47,22 +50,22 @@ module uartBuffer(
     parameter n7 = 8'b00110111;
     parameter n8 = 8'b00111000;
     parameter n9 = 8'b00111001;
-    
+
     reg rxEn = 1; wire [7:0] out; wire rxDone; wire rxBusy; wire rxErr;
     wire tx; reg txEn; reg txStart; reg in; wire txDone; wire txBusy;
     Uart8# (
-        .CLOCK_RATE(CLOCK_RATE),
-        .BAUD_RATE(BAUD_RATE)
+    .CLOCK_RATE(CLOCK_RATE),
+    .BAUD_RATE(BAUD_RATE)
     ) uart(
         .clk(clk),
-        
+
         .rx(rx),
         .rxEn(rxEn),
         .out(out),
         .rxDone(rxDone),
         .rxBusy(rxBusy),
         .rxErr(rxErr),
-        
+
         .tx(tx),
         .txEn(txEn),
         .txStart(txStart),
@@ -70,98 +73,98 @@ module uartBuffer(
         .txDone(txDone),
         .txBusy(txBusy)
     );
-    
-    integer idx;
-    integer i, temp_a, temp_b;
-    integer degree, digit_cv, num_sign;  // digit conversion for translatiing ACSII
-    reg [87:0] storage;
-    
+
+    integer idx, i;
+    integer degree, digit_cv, num_sign; // digit conversion for translatiing ACSII
+
     always @(posedge clk) begin
         if (rxDone == 1) begin
-            if (out == 8'b00001101) begin
-                // change a, b, and ops
-                
-                // translate a
-                if (storage[7:0] == negative) begin
-                    num_sign = -1;
+            // change a, b, and ops
+            if (out == newline || out == enter) begin
+                a = 0;
+                b = 0;
+                op = 0;
+                idx = 0;
+            end
+            // translate a
+            if (idx == 0) begin
+                if (out == negative) begin
+                    a = -a;
                 end
                 else begin
-                    num_sign = 1;
+                    a = a;
                 end
-                
-                degree = 1;
-                for (i = 1; i < 5; i = i +1) begin
-                    case (storage[i*8 +: 8])
-                        n0: digit_cv = 0;
-                        n1: digit_cv = 1;
-                        n2: digit_cv = 2;
-                        n3: digit_cv = 3;
-                        n4: digit_cv = 4;
-                        n5: digit_cv = 5;
-                        n6: digit_cv = 6;
-                        n7: digit_cv = 7;
-                        n8: digit_cv = 8;
-                        n9: digit_cv = 9;
-                    endcase
-                    a = a + digit_cv * degree;
-                    degree = degree * 10;
-                end
-                a = a * num_sign;
-                
-                // translate op
-                case (storage[48:40])
-                    positive: op <= 2'b00;
-                    negative: op <= 2'b01;
-                    mul: op <= 2'b10;
-                    div: op <= 2'b11;
+            end
+            else if (idx <= 1 && idx >= 4) begin
+                case (out)
+                    n0: digit_cv = 0;
+                    n1: digit_cv = 1;
+                    n2: digit_cv = 2;
+                    n3: digit_cv = 3;
+                    n4: digit_cv = 4;
+                    n5: digit_cv = 5;
+                    n6: digit_cv = 6;
+                    n7: digit_cv = 7;
+                    n8: digit_cv = 8;
+                    n9: digit_cv = 9;
                 endcase
-                
-                // translate b
-                if (storage[55:48] == negative) begin
-                    num_sign = -1;
+                case (idx)
+                    1: a = a + digit_cv*1000;
+                    2: a = a + digit_cv*100;
+                    3: a = a + digit_cv*10;
+                    4: a = a + digit_cv*1;
+                endcase
+            end
+            else if (idx == 5) begin
+                case(out)
+                    positive: op = 0;
+                    negative: op = 1;
+                    mul: op = 2;
+                    div: op = 3;
+                endcase
+            end
+            else if (idx == 6) begin
+                if (out == negative) begin
+                    b = -b;
                 end
                 else begin
-                    num_sign = 1;
+                    b = b;
                 end
-                
-                degree = 1;
-                for (i = 7; i < 11; i = i +1) begin
-                    case (storage[i*8 +: 8])
-                        n0: digit_cv = 0;
-                        n1: digit_cv = 1;
-                        n2: digit_cv = 2;
-                        n3: digit_cv = 3;
-                        n4: digit_cv = 4;
-                        n5: digit_cv = 5;
-                        n6: digit_cv = 6;
-                        n7: digit_cv = 7;
-                        n8: digit_cv = 8;
-                        n9: digit_cv = 9;
-                    endcase
-                    b = b + digit_cv * degree;
-                    degree = degree * 10;
-                end
-                b = b * num_sign;
-                
             end
-            else begin
-                storage[idx*8 +: 8] <= out;
+            else if (idx <= 7 && idx >= 10) begin
+                case (out)
+                    n0: digit_cv = 0;
+                    n1: digit_cv = 1;
+                    n2: digit_cv = 2;
+                    n3: digit_cv = 3;
+                    n4: digit_cv = 4;
+                    n5: digit_cv = 5;
+                    n6: digit_cv = 6;
+                    n7: digit_cv = 7;
+                    n8: digit_cv = 8;
+                    n9: digit_cv = 9;
+                endcase
+                case (idx)
+                    7: b = b + digit_cv*1000;
+                    8: b = b + digit_cv*100;
+                    9: b = b + digit_cv*10;
+                    10: b = b + digit_cv*1;
+                endcase
             end
-            
-            if (idx == 11) begin
+
+            if (idx == 10) begin
                 idx = 0;
             end
             else begin
                 idx = idx + 1;
             end
+
         end
     end
-    
+
     initial begin
         a = 0;
         b = 0;
-        temp_a = 0;
-        temp_b = 0;
         idx = 0;
         op = 0;
         in = 0;

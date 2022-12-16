@@ -60,7 +60,7 @@ module main(
     
     // --------------------------  ALU ---------------------------------- //
     
-    wire isNaN,isOverFlow;
+    wire isNaN = 0,isOverFlow = 0;
     wire [15:0] result;
 
     calculator calINST(
@@ -80,21 +80,7 @@ module main(
     assign sel = {sel3,sel2,sel1,sel0};
 
     assign {num3,num2,num1,num0} = result;
-
-  quadSevenSeg sevenINST(
-    seg,
-    dot,
-    sel0,
-    sel1,
-    sel2,
-    sel3,
-    num0,
-    num1,
-    num2,
-    num3,
-    finalCLK
-  );
-  
+    
     // -------------------------- Display VGA -------------------------- //
     vga vgaInst(
         .rgb({vgaRed, vgaGreen, vgaBlue}),
@@ -102,14 +88,9 @@ module main(
         .vsync(Vsync),
         .result(result),
         .clk(sysCLK),
-        // UART input will insert here
-        // Only 2 Complement 16 bit
         .a(a),
         .b(b),
         .op(op),
-//        .a(a),
-//        .b(b),
-//        .op(op),
         .isNaN(isNaN),
         .isOverFlow(isOverFlow)
     );
