@@ -53,16 +53,15 @@ module main(
     
     wire [15:0] a,b;
     wire [1:0] op; // + - / *
-//    assign a = UART_INPUT_A_2COMP
-//    assign b = UART_INPUT_B_2COMP
-//    assign op = UART_INPUT_C_2COMP
-
+    
+    uartBuffer uartBuf(
+        .a(a), .b(b), .op(op), .clk(sysCLK), .rx(RsRx), .tx(RsTx)
+    );
+    
     // --------------------------  ALU ---------------------------------- //
     
     wire isNaN,isOverFlow;
     wire [15:0] result;
-//    assign led[1] = isNaN;
-//    assign led[2] = isOverFlow;
 
     calculator calINST(
         .result(result),
@@ -70,13 +69,9 @@ module main(
         .isOverFlow(isOverFlow),
         // UART input will insert here
         // Only 2 Complement 16 bit
-        .a(sw[7:4]),                
-        .b(sw[3:0]),
-//        .a(a),                
-//        .b(b),
-        // OP 2 bit : + - * /               
-        .op(sw[15:14])
-//        .op(op)             
+        .a(a),                
+        .b(b),          
+        .op(op)             
     );
 
     // Display
@@ -86,7 +81,7 @@ module main(
 
     assign {num3,num2,num1,num0} = result;
 
-    quadSevenSeg sevenINST(
+  quadSevenSeg sevenINST(
     seg,
     dot,
     sel0,
@@ -98,7 +93,8 @@ module main(
     num2,
     num3,
     finalCLK
-    
+  );
+  
     // -------------------------- Display VGA -------------------------- //
     vga vgaInst(
         .rgb({vgaRed, vgaGreen, vgaBlue}),
@@ -108,9 +104,9 @@ module main(
         .clk(sysCLK),
         // UART input will insert here
         // Only 2 Complement 16 bit
-        .a(sw[7:4]),
-        .b(sw[3:0]),
-        .op(sw[15:14]),
+        .a(a),
+        .b(b),
+        .op(op),
 //        .a(a),
 //        .b(b),
 //        .op(op),
